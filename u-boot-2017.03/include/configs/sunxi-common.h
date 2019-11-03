@@ -499,6 +499,7 @@ extern int soft_i2c_gpio_scl;
 	CONSOLE_STDIN_SETTINGS \
 	CONSOLE_STDOUT_SETTINGS
 
+#if 0
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	CONSOLE_ENV_SETTINGS \
 	MEM_LAYOUT_ENV_SETTINGS \
@@ -507,6 +508,7 @@ extern int soft_i2c_gpio_scl;
 	"console=ttyS0,115200\0" \
 	BOOTCMD_SUNXI_COMPAT \
 	BOOTENV
+#endif
 
 #else /* ifndef CONFIG_SPL_BUILD */
 #define CONFIG_EXTRA_ENV_SETTINGS
