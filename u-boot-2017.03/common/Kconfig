@@ -393,6 +393,12 @@ config DISPLAY_BOARDINFO
 	  when U-Boot starts up. The board function checkboard() is called
 	  to do this.
 
+config ORANGEPI
+	bool "OrangePi config"
+	default y
+	help
+	  OrangePi Private modification.
+
 menu "Start-up hooks"
 
 config ARCH_EARLY_INIT_R

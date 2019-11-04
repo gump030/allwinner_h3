@@ -25,6 +25,12 @@
 	#define CONFIG_SUNXI_USB_PHYS	2
 #endif
 
+#ifdef CONFIG_ORANGEPI
+#ifndef CONFIG_BOOTARGS
+#define CONFIG_BOOTARGS		"console=ttyS0,115200 loglevel=7"
+#endif //CONFIG_BOOTARGS
+#endif //CONFIG_ORANGEPI
+
 /*
  * Include common sunxi configuration where most the settings are
  */
