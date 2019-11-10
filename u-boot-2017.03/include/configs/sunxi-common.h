@@ -511,7 +511,14 @@ extern int soft_i2c_gpio_scl;
 #else
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	CONSOLE_ENV_SETTINGS \
-	"bootm_size=0xa000000\0"
+	"bootm_size=0xa000000\0" \
+	"load_fw=ext4load mmc 0:2 0x40008000 uImage;" \
+		"ext4load mmc 0:2 0x41000000 ramdisk.gz;" \
+		"ext4load mmc 0:2 0x42000000 " CONFIG_DEFAULT_DEVICE_TREE ".dtb;\0" \
+	"bootm_fw=bootm 0x40008000 0x41000000 0x42000000;\0" \
+	"ipaddr=192.168.0.120\0" \
+	"serverip=192.168.0.103\0" \
+	"gatewayip=192.168.0.1\0"
 #endif
 
 #else /* ifndef CONFIG_SPL_BUILD */

@@ -27,9 +27,16 @@
 
 #ifdef CONFIG_ORANGEPI
 #ifndef CONFIG_BOOTARGS
-#define CONFIG_BOOTARGS		"console=ttyS0,115200 loglevel=7"
-#endif //CONFIG_BOOTARGS
-#endif //CONFIG_ORANGEPI
+#define CONFIG_BOOTARGS		\
+	"console=ttyS0,115200 " \
+		"root=/dev/ram0 rw init=/linuxrc " \
+		"blkdevparts=mmcblk2:1M(uboot),255M(firmware),7G(config),-(others)"
+#endif
+
+#ifndef CONFIG_BOOTCOMMAND
+#define CONFIG_BOOTCOMMAND	"run load_fw;run bootm_fw"
+#endif
+#endif
 
 /*
  * Include common sunxi configuration where most the settings are
