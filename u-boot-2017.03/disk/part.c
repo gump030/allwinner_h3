@@ -535,7 +535,20 @@ int blk_get_device_part_str(const char *ifname, const char *dev_part_str,
 
 		ret = 0;
 		goto cleanup;
+#ifndef CONFIG_ORANGEPI
 	}
+#else
+	} else if (part == 2) {
+		info->start = 0x100000 / (*dev_desc)->blksz;
+		info->size = 0xFF00000 / (*dev_desc)->blksz;
+		info->blksz = (*dev_desc)->blksz;
+		strcpy((char *)info->name, "Orangepi_fw_part");
+		(*dev_desc)->log2blksz = LOG2((*dev_desc)->blksz);
+
+		ret = 0;
+		goto cleanup;
+	}
+#endif
 
 	/*
 	 * Now there's known to be a partition table,
