@@ -2,7 +2,9 @@
 # Usage: ./build_mainline_uboot.sh [2 | pc | plus | lite | pc-plus | one | plus2e]
 
 #==========================================================
-export PATH="$PWD/gcc/gcc-linaro/bin":"$PATH"
+
+#如果环境变量中有设置编译工具链，则不需要以下这条命令
+#export PATH="$PWD/gcc/gcc-linaro/bin":"$PATH"
 
 basepath=$(cd `dirname $0`; pwd)
 
@@ -13,8 +15,8 @@ fi
 
 echo "check uboot source ..."
 echo " "
-cd $basepath/u-boot-2017.03/configs
- 
+cd $basepath/configs
+
 config="orangepi_${1}_defconfig"
 dts="sun8i-h3-orangepi-${1}.dtb"
 echo $config
@@ -29,7 +31,7 @@ echo "enter u-boot source director" && cd ../
 	echo "compile u-boot" && make $config
 
 date
-echo "build u-boot,please wait ..." && make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j8
+echo "build u-boot,please wait ..." && make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j16
 date
 
 #cd ../build/uboot

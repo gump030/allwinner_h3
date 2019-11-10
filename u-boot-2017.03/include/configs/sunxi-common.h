@@ -508,6 +508,10 @@ extern int soft_i2c_gpio_scl;
 	"console=ttyS0,115200\0" \
 	BOOTCMD_SUNXI_COMPAT \
 	BOOTENV
+#else
+#define CONFIG_EXTRA_ENV_SETTINGS \
+	CONSOLE_ENV_SETTINGS \
+	"bootm_size=0xa000000\0"
 #endif
 
 #else /* ifndef CONFIG_SPL_BUILD */
