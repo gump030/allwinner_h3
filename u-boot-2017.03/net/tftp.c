@@ -260,9 +260,9 @@ static void show_block_marker(void)
 	} else
 #endif
 	{
-		if (((tftp_cur_block - 1) % 10) == 0)
+		if (((tftp_cur_block - 1) % 50) == 0)
 			putc('#');
-		else if ((tftp_cur_block % (10 * HASHES_PER_LINE)) == 0)
+		else if ((tftp_cur_block % (50 * HASHES_PER_LINE)) == 0)
 			puts("\n\t ");
 	}
 }
